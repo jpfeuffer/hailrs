@@ -1,0 +1,16 @@
+{
+  "shape": [
+    5,
+    7
+  ],
+  "block_size": 3,
+  "sparsify": "sparsify_band(lower=-1, upper=1, blocks_only=True)",
+  "present_block_indices_col_major": [
+    0,
+    1,
+    2,
+    3,
+    5
+  ],
+  "absent_blocks_read_as": 0.0
+}

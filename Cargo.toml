@@ -1,0 +1,34 @@
+[package]
+name = "hailrs"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "JVM-free selective readers for native Hail Tables, MatrixTables and BlockMatrices"
+repository = "https://github.com/jpfeuffer/hailrs"
+
+[lib]
+name = "hailrs"
+crate-type = ["rlib", "cdylib"]
+
+[features]
+default = []
+python = ["dep:pyo3", "dep:numpy"]
+extension-module = ["python", "pyo3/extension-module"]
+
+[dependencies]
+bytes = "1"
+flate2 = "1"
+futures = "0.3"
+lz4_flex = "0.12"
+object_store = { version = "0.12.4", features = ["aws", "gcp", "http"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+thiserror = "2"
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+url = "2"
+zstd = "0.13"
+pyo3 = { version = "0.23", optional = true }
+numpy = { version = "0.23", optional = true }
+
+[dev-dependencies]
+tempfile = "3"

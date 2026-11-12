@@ -1,0 +1,10 @@
+/target/
+/.venv/
+__pycache__/
+*.pyc
+*.so
+*.dylib
+.pytest_cache/
+*.egg-info/
+*.log
+.DS_Store

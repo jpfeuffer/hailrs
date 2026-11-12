@@ -1,0 +1,8 @@
+{
+  "row": "struct{idx: int32, i32: int32, i64: int64, f32: float32, f64: float64, b: bool, s: str, arr_i32: array<int32>, arr_str: array<str>, st: struct{x: float64, inner: struct{a: int32, b: str}, tags: array<str>}, locus: locus<GRCh38>, interval: interval<locus<GRCh38>>, int_interval: interval<int32>, set_i32: set<int32>, dict_str_i64: dict<str, int64>, tup: tuple(int32, str, float64), call: call}",
+  "globals": "struct{g_name: str, g_ver: int64, g_arr: array<float64>, g_missing: int32}",
+  "key": [
+    "idx"
+  ],
+  "n_rows": 4
+}

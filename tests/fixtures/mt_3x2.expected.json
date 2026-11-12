@@ -1,0 +1,112 @@
+{
+  "schema": {
+    "globals": "struct{g_str: str, g_int: int32}",
+    "row": "struct{row_idx: int32, locus: locus<GRCh38>, alleles: array<str>, rsid: str, af: float64}",
+    "col": "struct{col_idx: int32, s: str, pheno: struct{age: int32, sex: str}}",
+    "entry": "struct{GT: call, DP: int32, GQ: float32}",
+    "row_key": [
+      "locus",
+      "alleles"
+    ],
+    "col_key": [
+      "s"
+    ]
+  },
+  "n_rows": 3,
+  "n_cols": 2,
+  "globals": {
+    "g_str": "mt global",
+    "g_int": -3
+  },
+  "rows": [
+    {
+      "row_idx": 0,
+      "locus": {
+        "contig": "chr1",
+        "position": 1000
+      },
+      "alleles": [
+        "A",
+        "T"
+      ],
+      "rsid": "rs0",
+      "af": 0.0
+    },
+    {
+      "row_idx": 1,
+      "locus": {
+        "contig": "chr1",
+        "position": 2000
+      },
+      "alleles": [
+        "A",
+        "T"
+      ],
+      "rsid": null,
+      "af": 0.1
+    },
+    {
+      "row_idx": 2,
+      "locus": {
+        "contig": "chr1",
+        "position": 3000
+      },
+      "alleles": [
+        "A",
+        "T"
+      ],
+      "rsid": "rs2",
+      "af": null
+    }
+  ],
+  "cols": [
+    {
+      "col_idx": 0,
+      "s": "sample_0",
+      "pheno": {
+        "age": 40,
+        "sex": "F"
+      }
+    },
+    {
+      "col_idx": 1,
+      "s": "sample_1",
+      "pheno": null
+    }
+  ],
+  "entries": [
+    [
+      {
+        "GT": "0/0",
+        "DP": null,
+        "GQ": 0.0
+      },
+      {
+        "GT": null,
+        "DP": 1,
+        "GQ": -0.5
+      }
+    ],
+    [
+      {
+        "GT": null,
+        "DP": 10,
+        "GQ": 1.0
+      },
+      {
+        "GT": "1/1",
+        "DP": null,
+        "GQ": 0.5
+      }
+    ],
+    [
+      {
+        "GT": "0/0",
+        "DP": 20,
+        "GQ": 2.0
+      },
+      null
+    ]
+  ],
+  "note": "entries[i][j] is null when the entry was filtered (row_idx=2,col_idx=1)"
+}
