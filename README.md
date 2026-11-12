@@ -8,8 +8,43 @@ Python exposes NumPy arrays and typed PyArrow tables.
 
 ## Install
 
-Requires a Rust toolchain and Python 3.10-3.13. This repository is not yet
-published to PyPI or crates.io.
+**[Version 0.1.0 is available as prebuilt GitHub release wheels](https://github.com/jpfeuffer/hailrs/releases/tag/v0.1.0).**
+No Rust, Java, or Spark is needed to install a wheel. This package is not yet
+published to PyPI or crates.io; `pip install hailrs` is not the installation
+method for this release.
+
+For **macOS Apple Silicon with Python 3.12**, inside a virtual environment:
+
+```sh
+python -m pip install https://github.com/jpfeuffer/hailrs/releases/download/v0.1.0/hailrs-0.1.0-cp312-cp312-macosx_11_0_arm64.whl
+```
+
+Or, with uv in a new directory:
+
+```sh
+uv venv --python 3.12
+uv pip install https://github.com/jpfeuffer/hailrs/releases/download/v0.1.0/hailrs-0.1.0-cp312-cp312-macosx_11_0_arm64.whl
+```
+
+Choose the matching wheel from the release for other environments:
+
+| Platform | Wheel platform tag | Python versions |
+|---|---|---|
+| macOS 11+, Apple Silicon | `macosx_11_0_arm64` | CPython 3.10-3.13 |
+| macOS 11+, Intel | `macosx_11_0_x86_64` | CPython 3.10-3.13 |
+| Linux glibc 2.28+, ARM64 | `manylinux_2_28_aarch64` | CPython 3.10-3.13 |
+| Linux glibc 2.28+, x86_64 | `manylinux_2_28_x86_64` | CPython 3.10-3.13 |
+
+`cp310`, `cp311`, `cp312`, and `cp313` identify the Python version. NumPy and
+PyArrow dependencies are installed automatically. Windows, musl-based Linux,
+PyPy, free-threaded Python, and Python 3.14+ wheels are not included.
+All 16 wheels were built in CI and each passed the 175-test real-Hail fixture
+suite after installation on its native platform. The release includes the
+source distribution and `SHA256SUMS`.
+
+### Build from source
+
+Requires a Rust toolchain and Python 3.10-3.13.
 
 ```sh
 git clone https://github.com/jpfeuffer/hailrs.git
@@ -25,6 +60,16 @@ uv run maturin develop --release
 
 Alternatively, install from a checkout with `python -m pip install .` inside
 your own virtual environment. No Hail/JVM dependencies are installed.
+
+### Maintainer publishing
+
+`.github/workflows/publish.yml` builds and tests the wheel matrix and source
+distribution. Dispatch it with `publish=false` for artifacts only. PyPI
+publication requires a pending GitHub Trusted Publisher for project `hailrs`,
+owner/repository `jpfeuffer/hailrs`, workflow `publish.yml`, environment
+`pypi`; no long-lived upload token is needed. With that account-side setup,
+dispatch from `main` with `publish=true` and the matching package version.
+The publish job runs only after every distribution job succeeds.
 
 ## Python
 
